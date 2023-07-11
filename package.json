@@ -2,7 +2,7 @@
   "name": "gopro-blockly",
   "version": "1.0.0",
   "private": true,
-  "homepage": "http://tahsinsiad.github.io/gopro-blockly",
+  "homepage": "https://0dan0.github.io/LabsBlocks",
   "dependencies": {
     "@cheprasov/qrcode": "^0.1.0",
     "blockly": "9.0.0",
