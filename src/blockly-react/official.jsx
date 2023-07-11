@@ -24,15 +24,11 @@ export const officialToolbox = (
     <Category name="%{BKY_CATLOGIC}" colour="%{BKY_LOGIC_HUE}">
       <Block type="customized_if_else" />
       <Block type="customized_logic_compare" />
+      <Block type="time_picker" />
       <Block type="loop" />
       <Block type="goto_loop" />
-    </Category>
-    <Category name="%{BKY_CATMATH}" colour="%{BKY_MATH_HUE}">
-      <Block type="math_number">
-        <Field name="NUM">0</Field>
-      </Block>
-      <Block type="basic_math_op" />
-      <Block type="special_math_op" />
+      <Block type="loop2" />
+      <Block type="goto_loop2" />
     </Category>
     <Category name="%{BKY_CATTEXT}" colour="%{BKY_TEXTS_HUE}">
       <Block type="print" />

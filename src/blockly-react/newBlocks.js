@@ -4,7 +4,7 @@ Blockly.Blocks['customzied_if'] = {
       .appendField('if')
       .appendField(
         new Blockly.FieldDropdown([
-          ['accelearation', 'ACCELEATATION'],
+          ['acceleration', 'ACCELEATATION'],
           ['gyro', 'GYRO'],
           ['iso value', 'ISO_VALUE'],
         ]),
@@ -12,7 +12,7 @@ Blockly.Blocks['customzied_if'] = {
       )
       .appendField(
         new Blockly.FieldDropdown([
-          ['>', 'GREATER_THAN'],
+          ['>=', 'GREATER_THAN'],
           ['<', 'LESS_THAN'],
           ['=', 'EQUAL_TO'],
         ]),
@@ -52,7 +52,7 @@ Blockly.Blocks['value_assign'] = {
       .appendField('=')
       .appendField(
         new Blockly.FieldDropdown([
-          ['accelaration', 'ACCELARATION'],
+          ['acceleration', 'ACCELERATION'],
           ['gyro', 'GYRO'],
           ['iso value', 'ISO_VALUE'],
         ]),
@@ -107,7 +107,7 @@ Blockly.Blocks['set_var'] = {
   init: function () {
     this.appendValueInput('NAME')
       .setCheck(null)
-      .appendField('set the value of')
+      .appendField('Variable')
       .appendField(
         new Blockly.FieldDropdown([
           ['A', 'A'],
@@ -242,54 +242,27 @@ Blockly.JavaScript['number_input'] = function (block) {
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
-Blockly.Blocks['special_math_op'] = {
-  init: function () {
-    this.appendValueInput('NAME')
-      .setCheck('Number')
-      .appendField(
-        new Blockly.FieldDropdown([['log10', 'LOG10_BASE']]),
-        'special_math_ops'
-      );
-    this.setOutput(true, null);
-    this.setColour(230);
-    this.setTooltip('');
-    this.setHelpUrl('');
-  },
-};
 
-Blockly.JavaScript['special_math_op'] = function (block) {
-  var dropdown_special_math_ops = block.getFieldValue('special_math_ops');
-  var value_name = Blockly.JavaScript.valueToCode(
-    block,
-    'NAME',
-    Blockly.JavaScript.ORDER_ATOMIC
-  );
-  // TODO: Assemble JavaScript into code variable.
-  var code = '...';
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.JavaScript.ORDER_NONE];
-};
-
-Blockly.Blocks['set_var'] = {
-  init: function () {
-    this.appendValueInput('set_var')
-      .setCheck(null)
-      .appendField('set the value of')
-      .appendField(
-        new Blockly.FieldDropdown([
-          ['A', 'A'],
-          ['B', 'B'],
-          ['C', 'C'],
-        ]),
-        'NAME'
-      );
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(135);
-    this.setTooltip('');
-    this.setHelpUrl('');
-  },
-};
+//Blockly.Blocks['set_var'] = {
+//  init: function () {
+//    this.appendValueInput('set_var')
+//      .setCheck(null)
+//      .appendField('set the value of')
+//      .appendField(
+//        new Blockly.FieldDropdown([
+//          ['A', 'A'],
+//          ['B', 'B'],
+//          ['C', 'C'],
+//        ]),
+//        'NAME'
+//      );
+//    this.setPreviousStatement(true, null);
+//    this.setNextStatement(true, null);
+//    this.setColour(135);
+//    this.setTooltip('');
+//    this.setHelpUrl('');
+//  },
+//};
 
 Blockly.JavaScript['set_var'] = function (block) {
   var dropdown_name = block.getFieldValue('NAME');

@@ -1,37 +1,28 @@
 import React from 'react';
 import './customBlocks';
 import Blockly from 'blockly/core';
-import { Block, Category, Sep } from './blocks';
+import { Block, Category, Value, Field, Sep } from './blocks';
 
 export const customTools = (
   <>
-    <Sep />
-    <Category name="%{BKY_CATBP}" colour="%{BKY_BP_HUE}">
+    <Category name="Actions" colour="230">
       <Block type="started_at" />
       <Block type="started_at_quickly" />
-      <Block type="time_picker" />
       <Block type="bp_gopro_start" />
       <Block type="bp_gopro_end" />
       <Block type="bp_gopro_upload" />
       <Block type="bp_gopro_repeat" />
     </Category>
-    <Category name="%{BKY_GOPRO_VAR}">
-      <Category name="%{BKY_USER_DEFINED_CAT}">
+    <Category name="Variables" colour="330">
+        <Block type="system_defined_var_list" />
+        <Block type="system_status_list" />
+        <Block type="gps_list" />
         <Block type="set_var" />
         <Block type="user_defined_var_list" />
-      </Category>
-      <Category name="%{BKY_SYSTEM_DEFINED_CAT}">
-        <Block type="set_var_system" />
-        <Block type="system_defined_var_list" />
-      </Category>
+		<Block type="math_number">
+			<Field name="NUM">0</Field>
+		</Block>
+		<Block type="basic_math_op" />
     </Category>
   </>
 );
-
-Blockly.setLocale({
-  CATBP: 'Action blocks',
-  GOPRO_VAR: 'GoPro Variables',
-  USER_DEFINED_CAT: 'User defined variables',
-  SYSTEM_DEFINED_CAT: 'System defined variables',
-  BP_HUE: 230,
-});

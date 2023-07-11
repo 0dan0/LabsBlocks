@@ -92,7 +92,7 @@ Blockly.Blocks['bp_gopro_repeat'] = {
 Blockly.Blocks['bp_tile_pick'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField('🏷️ Start at')
+      .appendField('🏷️ Sleep until')
       .appendField(new Blockly.FieldTextInput('A Tile'), 'TILE');
     this.setOutput(true, 'Tile');
     this.setColour(150);
@@ -103,7 +103,7 @@ Blockly.Blocks['bp_tile_pick'] = {
 Blockly.Blocks['bp_tile_pick_quickly'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField('🏷️ Start quickly at')
+      .appendField('🏷️ Sleep until')
       .appendField(new Blockly.FieldTextInput('A Tile'), 'TILE');
     this.setOutput(true, 'Tile');
     this.setColour(150);
@@ -122,7 +122,7 @@ Blockly.Blocks['set_var'] = {
         MATH_OPERATION_TYPE.ARITHMETIC,
         MATH_OPERATION_TYPE.LOGARITHMIC,
       ])
-      .appendField('set the value of')
+      .appendField('Variable')
       .appendField(
         new Blockly.FieldDropdown([
           ['A', 'A'],
@@ -137,7 +137,7 @@ Blockly.Blocks['set_var'] = {
       );
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(135);
+    this.setColour(330);
     this.setTooltip('');
     this.setHelpUrl('');
   },
@@ -147,33 +147,65 @@ Blockly.Blocks['system_defined_var_list'] = {
   init: function () {
     this.appendDummyInput().appendField(
       new Blockly.FieldDropdown([
-        ['accel (g)', 'a'],
-        ['battery (%)', 'b'],
-        ['distance (m)', 'c'],
-        ['GPS DOP', 'd'],
-        ['gyro (dps)', 'g'],
-        ['height (m)', 'h'],
-        ['iso value', 'i'],
-        ['speed (km/h)', 'k'],
-        ['loop count', 'l'],
-        ['motion (%)', 'm'],
-        ['sound level (dB)', 'p'],
-        ['recording (>0)', 'r'],
-        ['Remote Connected (>0)', 'r:C'],
-        ['App Connected (>0)', 'r:A'],
-        ['shutter speed', 's'],
-        ['USB power (>0)', 'u'],
-        ['mode press count', 'y'],
-        ['shutter press count', 'z'],
+        ['Sensor acceleration (g)', 'a'],
+        ['Sensor gyro (dps)', 'g'],
+        ['Sensor sound level (dB)', 'p'],
+        ['Sensor motion (%)', 'm'],
+        ['Sensor battery (%)', 'b'],
+        ['Sensor iso value', 'i'],
+        ['Sensor shutter speed', 's'],
       ]),
       'SYSTEM_DEFINED_VAR_LIST'
     );
     this.setOutput(true, VARIABLE_LIST_TYPE.SYSTEM_DEFINED);
-    this.setColour(230);
+    this.setColour(330);
     this.setTooltip('');
     this.setHelpUrl('');
   },
 };
+
+
+Blockly.Blocks['system_status_list'] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+      new Blockly.FieldDropdown([
+        ['Status recording (>0)', 'r'],
+        ['Status USB power (>0)', 'u'],
+        ['Status loop count', 'l'],
+        ['Status Remote Connected (>0)', 'r:C'],
+        ['Status App Connected (>0)', 'r:A'],
+        ['Status mode press count', 'y'],
+        ['Status shutter press count', 'z'],
+      ]),
+      'SYSTEM_STATUS_LIST'
+    );
+    this.setOutput(true, VARIABLE_LIST_TYPE.SYSTEM_DEFINED);
+    this.setColour(330);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
+
+
+
+Blockly.Blocks['gps_list'] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+      new Blockly.FieldDropdown([
+        ['GPS speed (km/h)', 'k'],
+        ['GPS DOP', 'd'],
+        ['GPS distance (m)', 'c'],
+        ['GPS height (m)', 'h'],
+      ]),
+      'GPS_LIST'
+    );
+    this.setOutput(true, VARIABLE_LIST_TYPE.SYSTEM_DEFINED);
+    this.setColour(330);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
+
 
 Blockly.Blocks['number_input'] = {
   init: function () {
@@ -192,37 +224,27 @@ Blockly.Blocks['basic_math_op'] = {
   init: function () {
     this.appendDummyInput().appendField(
       new Blockly.FieldDropdown([
-        ['+', '+'],
-        ['-', '-'],
-        ['*', '*'],
-        ['/', '/'],
-        ['^', '^'],
+        ['add', '+'],
+        ['subract', '-'],
+        ['multiple', '*'],
+        ['divide', '/'],
+        ['power', '^'],
+        ['AND', '&'],
+        ['OR', '|'],
+        ['modulus', '%'],
+        ['log', '#'],
       ]),
       'math_op'
     );
     this.appendValueInput('VAR_B').setCheck(BLOCKLY_DEFAULT_TYPE.NUMBER);
     this.setInputsInline(true);
     this.setOutput(true, MATH_OPERATION_TYPE.ARITHMETIC);
-    this.setColour(230);
+    this.setColour(330);
     this.setTooltip('');
     this.setHelpUrl('');
   },
 };
 
-Blockly.Blocks['special_math_op'] = {
-  init: function () {
-    this.appendValueInput('VAR_A')
-      .setCheck('Number')
-      .appendField(
-        new Blockly.FieldDropdown([['log', '#']]),
-        'special_math_ops'
-      );
-    this.setOutput(true, MATH_OPERATION_TYPE.LOGARITHMIC);
-    this.setColour(230);
-    this.setTooltip('');
-    this.setHelpUrl('');
-  },
-};
 
 Blockly.Blocks['print'] = {
   init: function () {
@@ -243,7 +265,7 @@ Blockly.Blocks['time_picker'] = {
       .appendField('current_time')
       .appendField(
         new Blockly.FieldDropdown([
-          ['>', '>'],
+          ['>=', '>'],
           ['<', '<'],
         ]),
         'comparison_op'
@@ -262,27 +284,10 @@ Blockly.Blocks['set_var_system'] = {
   init: function () {
     this.appendValueInput('set_system_defined_val')
       .setCheck(BLOCKLY_DEFAULT_TYPE.NUMBER)
-      .appendField('set the value of')
+      .appendField('Variable')
       .appendField(
         new Blockly.FieldDropdown([
-			['accel (g)', 'a'],
-			['battery (%)', 'b'],
-			['distance (m)', 'c'],
-			['GPS DOP', 'd'],
-			['gyro (dps)', 'g'],
-			['height (m)', 'h'],
-			['iso value', 'i'],
-			['speed (km/h)', 'k'],
-			['loop count', 'l'],
-			['motion (%)', 'm'],
-			['sound level (dB)', 'p'],
-			['recording (>0)', 'r'],
-			['Remote Connected (>0)', 'r:C'],
-			['App Connected (>0)', 'r:A'],
-			['shutter speed', 's'],
-			['USB power (>0)', 'u'],
-			['mode press count', 'y'],
-			['shutter press count', 'z'],
+			['not used', 'a'],
         ]),
         'SYSTEM_DEFINED_VAR'
       );
@@ -309,7 +314,7 @@ Blockly.Blocks['user_defined_var_list'] = {
       'USER_DEFINED_VAR_LIST'
     );
     this.setOutput(true, VARIABLE_LIST_TYPE.USER_DEFINED);
-    this.setColour(230);
+    this.setColour(330);
     this.setTooltip('');
     this.setHelpUrl('');
   },
@@ -391,7 +396,7 @@ Blockly.Blocks['customized_logic_compare'] = {
     ]);
     this.appendDummyInput().appendField(
       new Blockly.FieldDropdown([
-        ['>', '>'],
+        ['>=', '>'],
         ['<', '<'],
       ]),
       'comapre_op'
@@ -421,23 +426,46 @@ Blockly.Blocks['text_print'] = {
   },
 };
 
-Blockly.Blocks['goto_loop'] = {
-  init: function () {
-    this.appendDummyInput().appendField('goto loop');
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(230);
-    this.setTooltip('');
-    this.setHelpUrl('');
-  },
-};
-
 Blockly.Blocks['loop'] = {
   init: function () {
     this.appendDummyInput().appendField('loop:');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour(200);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
+
+Blockly.Blocks['goto_loop'] = {
+  init: function () {
+    this.appendDummyInput().appendField('goto loop');
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(200);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
+
+
+Blockly.Blocks['loop2'] = {
+  init: function () {
+    this.appendDummyInput().appendField('loop2:');
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(150);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
+
+Blockly.Blocks['goto_loop2'] = {
+  init: function () {
+    this.appendDummyInput().appendField('goto loop2');
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(150);
     this.setTooltip('');
     this.setHelpUrl('');
   },
@@ -475,6 +503,19 @@ javascriptGenerator['loop'] = function (block) {
 };
 
 javascriptGenerator['goto_loop'] = function (block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = ']';
+  return code;
+};
+
+
+javascriptGenerator['loop2'] = function (block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = '[';
+  return code;
+};
+
+javascriptGenerator['goto_loop2'] = function (block) {
   // TODO: Assemble JavaScript into code variable.
   var code = ']';
   return code;
@@ -642,18 +683,6 @@ javascriptGenerator['print'] = function (block) {
   return code;
 };
 
-javascriptGenerator['special_math_op'] = function (block) {
-  var dropdown_special_math_ops = block.getFieldValue('special_math_ops');
-  var value_name = javascriptGenerator.valueToCode(
-    block,
-    'VAR_A',
-    javascriptGenerator.ORDER_ATOMIC
-  );
-  // TODO: Assemble JavaScript into code variable.
-  var code = `${dropdown_special_math_ops}${value_name}`;
-  // TODO: Change ORDER_NONE to the correct strength.
-  return [code, javascriptGenerator.ORDER_ATOMIC];
-};
 
 javascriptGenerator['basic_math_op'] = function (block) {
   var dropdown_math_op = block.getFieldValue('math_op');
@@ -670,6 +699,27 @@ javascriptGenerator['basic_math_op'] = function (block) {
 
 javascriptGenerator['system_defined_var_list'] = function (block) {
   var dropdown_name = block.getFieldValue('SYSTEM_DEFINED_VAR_LIST');
+  // TODO: Assemble JavaScript into code variable.
+  var code = dropdown_name;
+  // console.log(dropdown_name);
+  // return dropdown_name;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, javascriptGenerator.ORDER_ATOMIC];
+};
+
+javascriptGenerator['gps_list'] = function (block) {
+  var dropdown_name = block.getFieldValue('GPS_LIST');
+  // TODO: Assemble JavaScript into code variable.
+  var code = dropdown_name;
+  // console.log(dropdown_name);
+  // return dropdown_name;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, javascriptGenerator.ORDER_ATOMIC];
+};
+
+
+javascriptGenerator['system_status_list'] = function (block) {
+  var dropdown_name = block.getFieldValue('SYSTEM_STATUS_LIST');
   // TODO: Assemble JavaScript into code variable.
   var code = dropdown_name;
   // console.log(dropdown_name);
@@ -818,7 +868,7 @@ javascriptGenerator['bp_tile_getamount'] = function (block) {
 javascriptGenerator['bp_tile_pick'] = function (block) {
   var dropdown_tile = block.getFieldValue('TILE');
   // TODO: Assemble javascriptGenerator into code variable.
-  var code = `!${dropdown_tile.replace(/:/g, '')}S`;
+  var code = `!${dropdown_tile.replace(/:/g, '')}N`;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, javascriptGenerator.ORDER_FUNCTION_CALL];
 };
@@ -826,7 +876,7 @@ javascriptGenerator['bp_tile_pick'] = function (block) {
 javascriptGenerator['bp_tile_pick_quickly'] = function (block) {
   var dropdown_tile = block.getFieldValue('TILE');
   // TODO: Assemble javascriptGenerator into code variable.
-  var code = `!${dropdown_tile.replace(/:/g, '')}SQ`;
+  var code = `!${dropdown_tile.replace(/:/g, '')}NQ`;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, javascriptGenerator.ORDER_FUNCTION_CALL];
 };
