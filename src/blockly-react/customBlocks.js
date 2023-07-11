@@ -95,7 +95,7 @@ Blockly.Blocks['bp_tile_pick'] = {
       .appendField('🏷️ Sleep until')
       .appendField(new Blockly.FieldTextInput('A Tile'), 'TILE');
     this.setOutput(true, 'Tile');
-    this.setColour(150);
+    this.setColour(230);
     this.setTooltip('');
     this.setHelpUrl('');
   },
@@ -106,7 +106,7 @@ Blockly.Blocks['bp_tile_pick_quickly'] = {
       .appendField('🏷️ Sleep until')
       .appendField(new Blockly.FieldTextInput('A Tile'), 'TILE');
     this.setOutput(true, 'Tile');
-    this.setColour(150);
+    this.setColour(230);
     this.setTooltip('');
     this.setHelpUrl('');
   },
@@ -122,7 +122,7 @@ Blockly.Blocks['set_var'] = {
         MATH_OPERATION_TYPE.ARITHMETIC,
         MATH_OPERATION_TYPE.LOGARITHMIC,
       ])
-      .appendField('Variable')
+      .appendField('Set variable')
       .appendField(
         new Blockly.FieldDropdown([
           ['A', 'A'],
@@ -137,7 +137,7 @@ Blockly.Blocks['set_var'] = {
       );
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(330);
+    this.setColour(350);
     this.setTooltip('');
     this.setHelpUrl('');
   },
@@ -158,7 +158,7 @@ Blockly.Blocks['system_defined_var_list'] = {
       'SYSTEM_DEFINED_VAR_LIST'
     );
     this.setOutput(true, VARIABLE_LIST_TYPE.SYSTEM_DEFINED);
-    this.setColour(330);
+    this.setColour(350);
     this.setTooltip('');
     this.setHelpUrl('');
   },
@@ -180,7 +180,7 @@ Blockly.Blocks['system_status_list'] = {
       'SYSTEM_STATUS_LIST'
     );
     this.setOutput(true, VARIABLE_LIST_TYPE.SYSTEM_DEFINED);
-    this.setColour(330);
+    this.setColour(350);
     this.setTooltip('');
     this.setHelpUrl('');
   },
@@ -200,7 +200,7 @@ Blockly.Blocks['gps_list'] = {
       'GPS_LIST'
     );
     this.setOutput(true, VARIABLE_LIST_TYPE.SYSTEM_DEFINED);
-    this.setColour(330);
+    this.setColour(350);
     this.setTooltip('');
     this.setHelpUrl('');
   },
@@ -239,7 +239,7 @@ Blockly.Blocks['basic_math_op'] = {
     this.appendValueInput('VAR_B').setCheck(BLOCKLY_DEFAULT_TYPE.NUMBER);
     this.setInputsInline(true);
     this.setOutput(true, MATH_OPERATION_TYPE.ARITHMETIC);
-    this.setColour(330);
+    this.setColour(350);
     this.setTooltip('');
     this.setHelpUrl('');
   },
@@ -274,30 +274,30 @@ Blockly.Blocks['time_picker'] = {
       .appendField(':')
       .appendField(new Blockly.FieldDropdown(minuteGenerator()), 'min');
     this.setOutput(true, BLOCKLY_DEFAULT_TYPE.BOOLEAN);
-    this.setColour(230);
+    this.setColour(300);
     this.setTooltip('');
     this.setHelpUrl('');
   },
 };
 
-Blockly.Blocks['set_var_system'] = {
-  init: function () {
-    this.appendValueInput('set_system_defined_val')
-      .setCheck(BLOCKLY_DEFAULT_TYPE.NUMBER)
-      .appendField('Variable')
-      .appendField(
-        new Blockly.FieldDropdown([
-			['not used', 'a'],
-        ]),
-        'SYSTEM_DEFINED_VAR'
-      );
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(135);
-    this.setTooltip('');
-    this.setHelpUrl('');
-  },
-};
+//Blockly.Blocks['set_var_system'] = {
+//  init: function () {
+//    this.appendValueInput('set_system_defined_val')
+//      .setCheck(BLOCKLY_DEFAULT_TYPE.NUMBER)
+//      .appendField('Set variable')
+//      .appendField(
+//        new Blockly.FieldDropdown([
+//			['not used', 'a'],
+//        ]),
+//        'SYSTEM_DEFINED_VAR'
+//      );
+//    this.setPreviousStatement(true, null);
+//    this.setNextStatement(true, null);
+//    this.setColour(135);
+//    this.setTooltip('');
+//    this.setHelpUrl('');
+//  },
+//};
 
 Blockly.Blocks['user_defined_var_list'] = {
   init: function () {
@@ -314,7 +314,7 @@ Blockly.Blocks['user_defined_var_list'] = {
       'USER_DEFINED_VAR_LIST'
     );
     this.setOutput(true, VARIABLE_LIST_TYPE.USER_DEFINED);
-    this.setColour(330);
+    this.setColour(350);
     this.setTooltip('');
     this.setHelpUrl('');
   },
@@ -323,13 +323,13 @@ Blockly.Blocks['user_defined_var_list'] = {
 Blockly.Blocks['started_at'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField('Start at')
+      .appendField('Sleep and wait until')
       .appendField(new Blockly.FieldDropdown(hourGenerator()), 'hour')
       .appendField(':')
       .appendField(new Blockly.FieldDropdown(minuteGenerator()), 'min');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(130);
+    this.setColour(230);
     this.setTooltip('');
     this.setHelpUrl('');
   },
@@ -338,13 +338,13 @@ Blockly.Blocks['started_at'] = {
 Blockly.Blocks['started_at_quickly'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField('Start quickly at')
+      .appendField('Sleep approx. until')
       .appendField(new Blockly.FieldDropdown(hourGenerator()), 'hour')
       .appendField(':')
       .appendField(new Blockly.FieldDropdown(minuteGenerator()), 'min');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(130);
+    this.setColour(230);
     this.setTooltip('');
     this.setHelpUrl('');
   },
@@ -407,7 +407,7 @@ Blockly.Blocks['customized_logic_compare'] = {
     ]);
     this.setInputsInline(true);
     this.setOutput(true, BLOCKLY_DEFAULT_TYPE.BOOLEAN);
-    this.setColour(230);
+    this.setColour(300);
     this.setTooltip('');
     this.setHelpUrl('');
   },
@@ -511,13 +511,13 @@ javascriptGenerator['goto_loop'] = function (block) {
 
 javascriptGenerator['loop2'] = function (block) {
   // TODO: Assemble JavaScript into code variable.
-  var code = '[';
+  var code = '{';
   return code;
 };
 
 javascriptGenerator['goto_loop2'] = function (block) {
   // TODO: Assemble JavaScript into code variable.
-  var code = ']';
+  var code = '}';
   return code;
 };
 

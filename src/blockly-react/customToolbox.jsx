@@ -13,7 +13,7 @@ export const customTools = (
       <Block type="bp_gopro_upload" />
       <Block type="bp_gopro_repeat" />
     </Category>
-    <Category name="Variables" colour="330">
+    <Category name="Variables" colour="350">
         <Block type="system_defined_var_list" />
         <Block type="system_status_list" />
         <Block type="gps_list" />

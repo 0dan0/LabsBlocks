@@ -22,7 +22,7 @@ Blockly.Blocks['customzied_if'] = {
     this.appendStatementInput('IFDO').setCheck(null).appendField('do');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour(200);
     this.setTooltip('');
     this.setHelpUrl('');
   },

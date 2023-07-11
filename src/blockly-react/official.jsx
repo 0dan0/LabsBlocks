@@ -23,12 +23,14 @@ export const officialToolbox = (
   <React.Fragment>
     <Category name="%{BKY_CATLOGIC}" colour="%{BKY_LOGIC_HUE}">
       <Block type="customized_if_else" />
-      <Block type="customized_logic_compare" />
-      <Block type="time_picker" />
       <Block type="loop" />
       <Block type="goto_loop" />
       <Block type="loop2" />
       <Block type="goto_loop2" />
+    </Category>
+    <Category name="Comparisons" colour="300">
+      <Block type="customized_logic_compare" />
+      <Block type="time_picker" />
     </Category>
     <Category name="%{BKY_CATTEXT}" colour="%{BKY_TEXTS_HUE}">
       <Block type="print" />

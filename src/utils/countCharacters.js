@@ -1,12 +1,16 @@
 export const countCharacters = (code) => {
   let res = '';
-  const charCount = [];
+  let charCount = 0;
+  let charCount2 = 0;
   for (let i = 0; i < code.length; i++) {
     if (code[i] === '[') {
-      charCount.push(i);
+      charCount = i;
     } else if (code[i] === ']') {
-      //   const trailingPlus = charCount.length > 1 ? '+' : '';
-      res += `!R${charCount.pop()}`;
+      res += `!R${charCount}`;
+    } else if (code[i] === '{') {
+      charCount2 = i;
+    } else if (code[i] === '}') {
+      res += `!R${charCount2}`;
     } else {
       res += code[i];
     }
