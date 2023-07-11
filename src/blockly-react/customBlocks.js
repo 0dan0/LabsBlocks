@@ -147,10 +147,24 @@ Blockly.Blocks['system_defined_var_list'] = {
   init: function () {
     this.appendDummyInput().appendField(
       new Blockly.FieldDropdown([
-        ['accelaration', 'a'],
-        ['gyro', 'g'],
+        ['accel (g)', 'a'],
+        ['battery (%)', 'b'],
+        ['distance (m)', 'c'],
+        ['GPS DOP', 'd'],
+        ['gyro (dps)', 'g'],
+        ['height (m)', 'h'],
         ['iso value', 'i'],
+        ['speed (km/h)', 'k'],
+        ['loop count', 'l'],
+        ['motion (%)', 'm'],
+        ['sound level (dB)', 'p'],
+        ['recording (>0)', 'r'],
+        ['Remote Connected (>0)', 'r:C'],
+        ['App Connected (>0)', 'r:A'],
         ['shutter speed', 's'],
+        ['USB power (>0)', 'u'],
+        ['mode press count', 'y'],
+        ['shutter press count', 'z'],
       ]),
       'SYSTEM_DEFINED_VAR_LIST'
     );
