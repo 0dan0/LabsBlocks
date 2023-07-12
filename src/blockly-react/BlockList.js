@@ -49,7 +49,7 @@ const BlockList = ({ onCloseHistoryModal }) => {
     setBlocksList(clonedBlocks);
     if (id === selectedBlock?.id) {
       setSelectedBlock(null);
-      setBlockTitle('New Block');
+      setBlockTitle('New Project');
       setChanges('');
       setIsSaveBtnEnable(false);
       workspace.clear();

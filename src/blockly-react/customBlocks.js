@@ -71,7 +71,7 @@ Blockly.Blocks['customized_if'] = {
     this.appendValueInput('CUSTOM_IF')
       .setCheck(BLOCKLY_DEFAULT_TYPE.BOOLEAN)
       .appendField('if');
-    this.appendStatementInput('IFDO').setCheck(null).appendField('do');
+    this.appendStatementInput('IFDO').setCheck(null).appendField('then');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
@@ -86,7 +86,7 @@ Blockly.Blocks['customized_if_else'] = {
     this.appendValueInput('CUSTOM_IF')
       .setCheck(BLOCKLY_DEFAULT_TYPE.BOOLEAN)
       .appendField('if (inner most nested)');
-    this.appendStatementInput('IFDO').setCheck(null).appendField('do');
+    this.appendStatementInput('IFDO').setCheck(null).appendField('then');
      this.appendStatementInput('ELSEDO')
        .setCheck(null)
        .setAlign(Blockly.ALIGN_RIGHT)

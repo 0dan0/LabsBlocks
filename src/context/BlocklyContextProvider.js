@@ -3,7 +3,7 @@ import React, { createContext, useEffect, useState } from 'react';
 export const BlocklyContext = createContext();
 
 const BlocklyContextProvider = ({ children, localStorageBlockList }) => {
-  const [blockTitle, setBlockTitle] = useState('New Block');
+  const [blockTitle, setBlockTitle] = useState('New Project');
   const [selectedBlock, setSelectedBlock] = useState(null);
   const [blocksList, setBlocksList] = useState([]);
   const [openModal, setOpenModal] = useState(false);
