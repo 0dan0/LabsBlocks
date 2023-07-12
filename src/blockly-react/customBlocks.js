@@ -181,6 +181,29 @@ Blockly.Blocks['bp_gopro_wifi'] = {
   },
 };
 
+
+Blockly.Blocks['bp_gopro_livestream'] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+		  new Blockly.FieldDropdown([
+			['Go Live at 1080p', '!GL'],
+			['Go Live at 720p',  '!GM'],
+			['Go Live at 480p',  '!GS'],
+			['Go Live at 1080p + Capture', '!GLC'],
+			['Go Live at 720p + Capture',  '!GMC'],
+			['Go Live at 480p + Capture',  '!GSC'],
+		  ]),
+		'props'
+	  );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(190);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
+
+
 Blockly.Blocks['bp_gopro_upload'] = {
   init: function () {
     this.appendDummyInput().appendField('Upload');
@@ -231,6 +254,214 @@ Blockly.Blocks['bp_gopro_reboot'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(false, null);
     this.setColour(190);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
+
+Blockly.Blocks['bp_gopro_twmode'] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+		  new Blockly.FieldDropdown([
+			['TimeWarp Mode Normal','!TN'],
+			['TimeWarp Mode Realtime','!TR'],
+		  ]),
+		'props'
+	  );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(190);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
+
+
+Blockly.Blocks['bp_gopro_waitDOP'] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+		  new Blockly.FieldDropdown([
+			['Wait GPS lock okay','!D'],
+			['Wait GPS lock good','!D12'],
+			['Wait GPS lock precise','!D6'],
+		  ]),
+		'props'
+	  );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(190);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
+
+
+Blockly.Blocks['bp_gopro_buttons'] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+		  new Blockly.FieldDropdown([
+			['Buttons disable both','!Z3'],
+			['Buttons disable shutter only','!Z1'],
+			['Buttons disable mode only','!Z2'],
+			['Buttons enable both','!Z0']
+		  ]),
+		'props'
+	  );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(190);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
+
+Blockly.Blocks['bp_gopro_beeps'] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+		  new Blockly.FieldDropdown([
+			['Feedback Blink once','!B'],
+			['Feedback Beep once','!B0'],
+			['Feedback Blink+Beep once','!B1'],
+			['Feedback Blink+Beep twice','!B2']
+		  ]),
+		'props'
+	  );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(190);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
+
+
+
+
+
+Blockly.Blocks['mode'] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+		  new Blockly.FieldDropdown([
+			['mode Video Standard','mV0'],
+			['mode Video Activity','mV1'],
+			['mode Video Cinematic','mV2'],
+			['mode Video Full Frame','mV3'],
+			['mode Video Slomo','mV4'],
+			['mode Timelaspe','mT'],
+			['mode TimeWarp','mTW'],
+			['mode Photo','mP'],
+			['mode Photo Burst','mPB'],
+			['mode Night Photo','mPN'],
+			['mode Timelaspe Photo','mTP'],
+			['mode Nightlaspe Photo','mNP'],
+			['mode Nightlaspe Video','mNL'],
+		  ]),
+		'props'
+	  );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(100);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
+
+Blockly.Blocks['res'] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+		  new Blockly.FieldDropdown([
+			['res 1080p','r1'],
+			['res 2.7k','r27'],
+			['res 2.7k 4:3', 'r27T'],
+			['res 4K', 'r4T'],
+			['res 4K 4:3', 'r4T'],
+			['res 4K 8:7', 'r4X'],
+			['res 5.3K', 'r5'],
+			['res 5.3K 4:3', 'r5T'],
+			['res 5.3K 8:7', 'r5X'],
+		  ]),
+		'props'
+	  );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(100);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
+
+Blockly.Blocks['fps'] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+		  new Blockly.FieldDropdown([
+			['fps 24','p24'],
+			['fps 25','p25'],
+			['fps 30','p30'],
+			['fps 50','p50'],
+			['fps 60','p60'],
+			['fps 100','[p100'],
+			['fps 120','[p120'],
+			['fps 200','[p200'],
+			['fps 240','[p240'],
+		  ]),
+		'props'
+	  );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(100);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
+
+Blockly.Blocks['lens'] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+		  new Blockly.FieldDropdown([
+			['lens Wide','fW'],
+			['lens Linear','fL'],
+			['lens Linear+HL','fH'],
+			['lens Superview','fS'],
+			['lens Hyperview','fV'],
+		  ]),
+		'props'
+	  );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(100);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
+
+
+Blockly.Blocks['EIS'] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+		  new Blockly.FieldDropdown([
+			['EIS Off','e0'],
+			['EIS On','e1'],
+			['EIS Boost','e3'],
+			['EIS AutoBoost','e4'],
+		  ]),
+		'props'
+	  );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(100);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
+
+Blockly.Blocks['qr_command'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField('added QR command')
+      .appendField(new Blockly.FieldTextInput('\"your command\"'), 'TEXT_PRINT');
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(100);
     this.setTooltip('');
     this.setHelpUrl('');
   },
@@ -410,7 +641,7 @@ Blockly.Blocks['customized_logic_compare'] = {
 			['>=', '>'],
 			['<', '<'],
 		  ]),
-		'comapre_op'
+		'compare_op'
 	  );
     this.appendValueInput('VAR_B').setCheck([
       VARIABLE_LIST_TYPE.USER_DEFINED,
@@ -562,7 +793,7 @@ Blockly.Blocks['text_print'] = {
       .appendField(new Blockly.FieldTextInput('Hello World'), 'TEXT_PRINT');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(135);
+    this.setColour(150);
     this.setTooltip('');
     this.setHelpUrl('');
   },
@@ -575,7 +806,7 @@ Blockly.Blocks['print_var'] = {
       .appendField('print variable/sensor');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(135);
+    this.setColour(150);
     this.setTooltip('');
     this.setHelpUrl('');
   },
@@ -619,14 +850,14 @@ javascriptGenerator['customized_logic_compare'] = function (block) {
     'VAR_A',
     javascriptGenerator.ORDER_ATOMIC
   );
-  var dropdown_comapre_op = block.getFieldValue('comapre_op');
+  var dropdown_compare_op = block.getFieldValue('compare_op');
   var value_var_b = javascriptGenerator.valueToCode(
     block,
     'VAR_B',
     javascriptGenerator.ORDER_ATOMIC
   );
   // TODO: Assemble JavaScript into code variable.
-  var code = `${dropdown_comapre_op}${value_var_a}${value_var_b}`;
+  var code = `${dropdown_compare_op}${value_var_a}${value_var_b}`;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, javascriptGenerator.ORDER_ATOMIC];
 };
@@ -917,6 +1148,36 @@ javascriptGenerator['bp_gopro_wifi'] = function (block) {
   return code;
 };
 
+javascriptGenerator['bp_gopro_livestream'] = function (block) {
+  var props = block.getFieldValue('props');
+  var code = `${props};`;
+  return code;
+};
+
+javascriptGenerator['bp_gopro_twmode'] = function (block) {
+  var props = block.getFieldValue('props');
+  var code = `${props};`;
+  return code;
+};
+
+javascriptGenerator['bp_gopro_waitDOP'] = function (block) {
+  var props = block.getFieldValue('props');
+  var code = `${props};`;
+  return code;
+};
+
+javascriptGenerator['bp_gopro_buttons'] = function (block) {
+  var props = block.getFieldValue('props');
+  var code = `${props};`;
+  return code;
+};
+
+javascriptGenerator['bp_gopro_beeps'] = function (block) {
+  var props = block.getFieldValue('props');
+  var code = `${props};`;
+  return code;
+};
+
 javascriptGenerator['bp_gopro_upload'] = function (block) {
   var code = `!U;`;
   return code;
@@ -941,6 +1202,46 @@ javascriptGenerator['bp_gopro_reboot'] = function (block) {
   var code = `!1OR;`;
   return code;
 };
+
+
+//settings
+
+
+javascriptGenerator['mode'] = function (block) {
+  var props = block.getFieldValue('props');
+  var code = `${props};`;
+  return code;
+};
+
+javascriptGenerator['res'] = function (block) {
+  var props = block.getFieldValue('props');
+  var code = `${props};`;
+  return code;
+};
+
+javascriptGenerator['fps'] = function (block) {
+  var props = block.getFieldValue('props');
+  var code = `${props};`;
+  return code;
+};
+
+javascriptGenerator['lens'] = function (block) {
+  var props = block.getFieldValue('props');
+  var code = `${props};`;
+  return code;
+};
+
+javascriptGenerator['EIS'] = function (block) {
+  var props = block.getFieldValue('props');
+  var code = `${props};`;
+  return code;
+};
+
+javascriptGenerator['qr_command'] = function (block) {
+  var text_print_val = block.getFieldValue('TEXT_PRINT');
+  return `${text_print_val};`;
+};
+
 
 javascriptGenerator['controls_if'] = function (block) {
   // If/elseif/else condition.
