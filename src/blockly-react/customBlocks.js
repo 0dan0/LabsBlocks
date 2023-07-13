@@ -83,9 +83,10 @@ Blockly.Blocks['customized_if'] = {
 
 Blockly.Blocks['customized_if_else'] = {
   init: function () {
+    this.appendDummyInput().appendField('Only use on the inner-most of nested ifs');
     this.appendValueInput('CUSTOM_IF')
       .setCheck(BLOCKLY_DEFAULT_TYPE.BOOLEAN)
-      .appendField('if (inner most nested)');
+      .appendField('if');
     this.appendStatementInput('IFDO').setCheck(null).appendField('then');
      this.appendStatementInput('ELSEDO')
        .setCheck(null)
@@ -616,7 +617,9 @@ Blockly.Blocks['basic_math_op'] = {
       ]),
       'math_op'
     );
-    this.appendValueInput('VAR_B').setCheck(BLOCKLY_DEFAULT_TYPE.NUMBER);
+    this.appendValueInput('VAR_B').setCheck([
+		BLOCKLY_DEFAULT_TYPE.NUMBER, 
+		VARIABLE_LIST_TYPE.USER_DEFINED],);
     this.setInputsInline(true);
     this.setOutput(true, MATH_OPERATION_TYPE.ARITHMETIC);
     this.setColour(350);
