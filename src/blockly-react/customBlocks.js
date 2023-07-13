@@ -590,12 +590,11 @@ Blockly.Blocks['gps_list'] = {
 
 Blockly.Blocks['number_input'] = {
   init: function () {
-    this.appendDummyInput().appendField(
-      new Blockly.FieldNumber(0),
-      'number_input'
-    );
+    this.appendDummyInput()
+      .appendField('num')
+      .appendField(new Blockly.FieldNumber(0, -9999999, 9999999, 0.0001), 'number');
     this.setOutput(true, BLOCKLY_DEFAULT_TYPE.NUMBER);
-    this.setColour(120);
+    this.setColour(350);
     this.setTooltip('');
     this.setHelpUrl('');
   },
@@ -603,7 +602,9 @@ Blockly.Blocks['number_input'] = {
 
 Blockly.Blocks['basic_math_op'] = {
   init: function () {
-    this.appendDummyInput().appendField(
+    this.appendDummyInput()
+      .appendField('math')
+	  .appendField(
       new Blockly.FieldDropdown([
         ['add', '+'],
         ['subract', '-'],
@@ -725,7 +726,9 @@ Blockly.Blocks['system_conditions'] = {
 
 Blockly.Blocks['user_defined_var_list'] = {
   init: function () {
-    this.appendDummyInput().appendField(
+    this.appendDummyInput()
+      .appendField('var')
+	  .appendField(
       new Blockly.FieldDropdown([
         ['A', 'A'],
         ['B', 'B'],
@@ -1073,11 +1076,11 @@ javascriptGenerator['user_defined_var_list'] = function (block) {
 };
 
 javascriptGenerator['number_input'] = function (block) {
-  var number_name = block.getFieldValue('number_input');
+  var num = block.getFieldValue('number');
   // TODO: Assemble JavaScript into code variable.
-  var code = '...';
+  var code = `${num};`;
   // TODO: Change ORDER_NONE to the correct strength.
-  return [code, javascriptGenerator.ORDER_NONE];
+  return [code, javascriptGenerator.ORDER_ATOMIC];
 };
 
 javascriptGenerator['print_var'] = function (block) {

@@ -34,9 +34,7 @@ export const customTools = (
     <Category name="Variables" colour="350">
         <Block type="set_var" />
         <Block type="user_defined_var_list" />
-		<Block type="math_number">
-			<Field name="NUM">0</Field>
-		</Block>
+		<Block type="number_input" />
 		<Block type="basic_math_op" />
     </Category>	
     <Category name="Sensors" colour="50">
