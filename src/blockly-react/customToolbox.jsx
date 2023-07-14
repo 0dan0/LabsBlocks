@@ -13,7 +13,7 @@ export const customTools = (
       <Block type="EIS" />
       <Block type="qr_command" />
     </Category>
-    <Category name="Actions" colour="190">
+    <Category name="Actions" colour="180">
       <Block type="pause_until" />
       <Block type="pause_quickly" />
       <Block type="pause_seconds" />
