@@ -75,7 +75,7 @@ Blockly.Blocks['customized_if'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
-    this.setTooltip('');
+    this.setTooltip('Classic IF-THEN branch. Requires a Comparison block for conditions of time, camera status or variable');
     this.setHelpUrl('');
   },
 };
@@ -95,7 +95,7 @@ Blockly.Blocks['customized_if_else'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
-    this.setTooltip('');
+    this.setTooltip('Custom IF-THEN-ELSE branching. Can do only be used as the inner most condition if nested: e.g. IF(IF(IF-THEN-ELSE)))\n Also requires a Comparison block for conditions of time, camera status or variable');
     this.setHelpUrl('');
   },
 };
@@ -108,7 +108,7 @@ Blockly.Blocks['loop'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(240);
-    this.setTooltip('');
+    this.setTooltip('This a marker for you can jump to using the matching goto loop: command');
     this.setHelpUrl('');
   },
 };
@@ -119,7 +119,7 @@ Blockly.Blocks['goto_loop'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(false, null);
     this.setColour(240);
-    this.setTooltip('');
+    this.setTooltip('Jump to goto loop:');
     this.setHelpUrl('');
   },
 };
@@ -131,7 +131,7 @@ Blockly.Blocks['loop2'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(250);
-    this.setTooltip('');
+    this.setTooltip('This a marker for you can jump to using the matching goto loop2: command');
     this.setHelpUrl('');
   },
 };
@@ -142,7 +142,7 @@ Blockly.Blocks['goto_loop2'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(false, null);
     this.setColour(250);
-    this.setTooltip('');
+    this.setTooltip('Jump to goto loop2:');
     this.setHelpUrl('');
   },
 };
@@ -654,7 +654,7 @@ Blockly.Blocks['customized_logic_compare'] = {
     this.setInputsInline(true);
     this.setOutput(true, BLOCKLY_DEFAULT_TYPE.BOOLEAN);
     this.setColour(300);
-    this.setTooltip('');
+    this.setTooltip('To be used with IF-THEN-(ELSE) branches, for comparing sensor or variable fields with a number or another variable. Requires two blocks from either Variables or Sensors');
     this.setHelpUrl('');
   },
 };
@@ -675,7 +675,7 @@ Blockly.Blocks['time_picker'] = {
       .appendField(new Blockly.FieldDropdown(minuteGenerator()), 'min');
     this.setOutput(true, BLOCKLY_DEFAULT_TYPE.BOOLEAN);
     this.setColour(300);
-    this.setTooltip('');
+    this.setTooltip("To be used with IF-THEN-(ELSE) branches, for comparing the camera's time with your inputs");
     this.setHelpUrl('');
   },
 };
@@ -699,7 +699,7 @@ Blockly.Blocks['system_conditions'] = {
       )
     this.setOutput(true, BLOCKLY_DEFAULT_TYPE.BOOLEAN);
     this.setColour(300);
-    this.setTooltip('');
+    this.setTooltip("To be used with IF-THEN-(ELSE) branches, for testing the camera status like recording or USB power.");
     this.setHelpUrl('');
   },
 };
@@ -800,20 +800,22 @@ Blockly.Blocks['text_print'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(150);
-    this.setTooltip('');
+    this.setTooltip('display on camera any text message');
     this.setHelpUrl('');
   },
 };
 
 Blockly.Blocks['print_var'] = {
   init: function () {
+    this.appendDummyInput().appendField('variable/sensor');
     this.appendValueInput('print')
       .setCheck([BLOCKLY_DEFAULT_TYPE.STRING, VARIABLE_LIST_TYPE.USER_DEFINED, VARIABLE_LIST_TYPE.SYSTEM_DEFINED])
-      .appendField('print variable/sensor');
+	  .appendField(new Blockly.FieldTextInput('value'), 'TEXT_PRINT')
+    this.appendDummyInput().appendField(new Blockly.FieldTextInput(' units'), 'UNITS_PRINT');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(150);
-    this.setTooltip('');
+    this.setTooltip('display on camera the variable or sensor value');
     this.setHelpUrl('');
   },
 };
@@ -1089,8 +1091,12 @@ javascriptGenerator['print_var'] = function (block) {
     'print',
     javascriptGenerator.ORDER_ATOMIC
   );
+  
+  var text_print_val = block.getFieldValue('TEXT_PRINT');
+  var units_print_val = block.getFieldValue('UNITS_PRINT');
+  
   // TODO: Assemble JavaScript into code variable.
-  var code = `"${value_print} is $${value_print}";`;
+  var code = `"${text_print_val} $${value_print}${units_print_val}";`;
   return code;
 };
 
