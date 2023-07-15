@@ -568,6 +568,29 @@ Blockly.Blocks['system_status_list'] = {
 };
 
 
+Blockly.Blocks['system_time_list'] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+      new Blockly.FieldDropdown([
+        ['Time year', 't:Y'],
+        ['Time month', 't:M'],
+        ['Time day', 't:D'],
+        ['Time hour', 't:H'],
+        ['Time minute', 't:N'],
+        ['Time second', 't:S'],
+        ['Time day of the week (Sun-0, thru 6)', 't:W'],
+        ['Time seconds since boot', 't:B'],
+        ['Time seconds since QR Code', 't:Q'],
+      ]),
+      'SYSTEM_TIME_LIST'
+    );
+    this.setOutput(true, VARIABLE_LIST_TYPE.SYSTEM_DEFINED);
+    this.setColour(50);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
+
 
 Blockly.Blocks['gps_list'] = {
   init: function () {
@@ -1144,6 +1167,18 @@ javascriptGenerator['system_status_list'] = function (block) {
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, javascriptGenerator.ORDER_ATOMIC];
 };
+
+
+javascriptGenerator['system_time_list'] = function (block) {
+  var dropdown_name = block.getFieldValue('SYSTEM_TIME_LIST');
+  // TODO: Assemble JavaScript into code variable.
+  var code = dropdown_name;
+  // console.log(dropdown_name);
+  // return dropdown_name;
+  // TODO: Change ORDER_NONE to the correct strength.
+  return [code, javascriptGenerator.ORDER_ATOMIC];
+};
+
 
 javascriptGenerator['bp_gopro_start'] = function (block) {
   var code = `!S;`;

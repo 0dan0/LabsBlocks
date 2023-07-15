@@ -40,6 +40,7 @@ export const customTools = (
     <Category name="Sensors" colour="50">
         <Block type="system_defined_var_list" />
         <Block type="system_status_list" />
+        <Block type="system_time_list" />
         <Block type="gps_list" />
     </Category>
   </>
