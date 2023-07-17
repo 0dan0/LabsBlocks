@@ -151,7 +151,7 @@ Blockly.Blocks['goto_loop2'] = {
 
 Blockly.Blocks['bp_gopro_start'] = {
   init: function () {
-    this.appendDummyInput().appendField('Start');
+    this.appendDummyInput().appendField('Start capture');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(190);
@@ -162,7 +162,7 @@ Blockly.Blocks['bp_gopro_start'] = {
 
 Blockly.Blocks['bp_gopro_end'] = {
   init: function () {
-    this.appendDummyInput().appendField('End');
+    this.appendDummyInput().appendField('End capture');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(190);
@@ -207,7 +207,7 @@ Blockly.Blocks['bp_gopro_livestream'] = {
 
 Blockly.Blocks['bp_gopro_upload'] = {
   init: function () {
-    this.appendDummyInput().appendField('Upload');
+    this.appendDummyInput().appendField('Upload to cloud');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(190);
@@ -218,7 +218,7 @@ Blockly.Blocks['bp_gopro_upload'] = {
 
 Blockly.Blocks['bp_gopro_repeat'] = {
   init: function () {
-    this.appendDummyInput().appendField('Repeat');
+    this.appendDummyInput().appendField('Repeat everything');
     this.setPreviousStatement(true, null);
     this.setNextStatement(false, null);
     this.setColour(190);
@@ -229,7 +229,7 @@ Blockly.Blocks['bp_gopro_repeat'] = {
 
 Blockly.Blocks['bp_gopro_exit'] = {
   init: function () {
-    this.appendDummyInput().appendField('Exit');
+    this.appendDummyInput().appendField('Exit Program');
     this.setPreviousStatement(true, null);
     this.setNextStatement(false, null);
     this.setColour(190);
@@ -240,7 +240,7 @@ Blockly.Blocks['bp_gopro_exit'] = {
 
 Blockly.Blocks['bp_gopro_shutdown'] = {
   init: function () {
-    this.appendDummyInput().appendField('Shutdown');
+    this.appendDummyInput().appendField('Shutdown camera');
     this.setPreviousStatement(true, null);
     this.setNextStatement(false, null);
     this.setColour(190);
@@ -251,7 +251,7 @@ Blockly.Blocks['bp_gopro_shutdown'] = {
 
 Blockly.Blocks['bp_gopro_reboot'] = {
   init: function () {
-    this.appendDummyInput().appendField('Reboot');
+    this.appendDummyInput().appendField('Reboot camera');
     this.setPreviousStatement(true, null);
     this.setNextStatement(false, null);
     this.setColour(190);
@@ -893,6 +893,7 @@ javascriptGenerator['customized_logic_compare'] = function (block) {
   return [code, javascriptGenerator.ORDER_ATOMIC];
 };
 
+
 javascriptGenerator['customized_if'] = function (block) {
   var value_custom_if = javascriptGenerator.valueToCode(
     block,
@@ -900,11 +901,8 @@ javascriptGenerator['customized_if'] = function (block) {
     javascriptGenerator.ORDER_ATOMIC
   );
   var statements_ifdo = javascriptGenerator.statementToCode(block, 'IFDO');
-  var statements_elsedo = javascriptGenerator.statementToCode(block, 'ELSEDO');
   let trimmedStatements = statements_ifdo?.trim().replace(/;/g, '+');
-  let trimmedStatementsElse = statements_elsedo?.trim().replace(/;/g, '+');
   const trimmedStatementsLength = trimmedStatements?.length;
-  const trimmedStatementsElseLength = trimmedStatementsElse?.length;
   if (
     trimmedStatementsLength &&
     trimmedStatements[trimmedStatementsLength - 1] === '+'
@@ -919,63 +917,8 @@ javascriptGenerator['customized_if'] = function (block) {
     );
   }
 
-  if (
-    trimmedStatementsElseLength &&
-    trimmedStatementsElse[trimmedStatementsElseLength - 1] === '+'
-  ) {
-    console.log({
-      trimmedStatementsElse,
-      last: trimmedStatementsElse[trimmedStatementsElseLength - 1],
-    });
-    trimmedStatementsElse = trimmedStatementsElse.substring(
-      0,
-      trimmedStatementsElseLength - 1
-    );
-  }
-
-  // const children = block.getChildren(true);
-
-  // const firstChildOfIfBlock = children[1] || null;
-  // const firstChildOfElseBlock = children[2] || null;
-
-  // const allChildsOfIfBlock = firstChildOfIfBlock
-  //   ? generateAllChildrenBlocks(firstChildOfIfBlock, [firstChildOfIfBlock])
-  //   : [];
-
-  // const allChildsOfElseBlock = firstChildOfElseBlock
-  //   ? generateAllChildrenBlocks(firstChildOfElseBlock, [firstChildOfElseBlock])
-  //   : [];
-
-  // const childsToCodeIfBlock = allChildsOfIfBlock
-  //   .filter((block) => !ignoredBlocks.includes(block?.type))
-  //   .map((block) => javascriptGenerator[block?.type](block))
-  //   .join('+');
-
-  // const childsToCodeElseBlock = allChildsOfElseBlock
-  //   .filter((block) => !ignoredBlocks.includes(block?.type))
-  //   .map((block) => javascriptGenerator[block?.type](block))
-  //   .join('+');
-
-  // const printBlock = block.getChildren().find((ch) => ch.type === 'text_print');
-  // const printBlockValue = printBlock?.getFieldValue('TEXT_PRINT');
-  // const hasPrintBlockNextBlock = printBlock?.getNextBlock();
-
-  // const renderElseStatementCode = childsToCodeElseBlock?.length
-  //   ? `~${childsToCodeElseBlock}`
-  //   : '';
-
-  const renderElseStatementCode = trimmedStatementsElseLength
-    ? `~${trimmedStatementsElse}`
-    : '';
-
-  // const finalIfStatement =
-  //   trimmedStatements?.length &&
-  //   (hasPrintBlockNextBlock || statements_elsedo?.length)
-  //     ? trimmedStatements.replace(printBlockValue, `+"${printBlockValue}"+`)
-  //     : trimmedStatements.replace(printBlockValue, `+"${printBlockValue}`);
-
   // TODO: Assemble JavaScript into code variable.
-  var code = `${value_custom_if}${trimmedStatements}${renderElseStatementCode}`;
+  var code = `${value_custom_if}${trimmedStatements}`;
   return code;
 };
 
@@ -1103,7 +1046,7 @@ javascriptGenerator['user_defined_var_list'] = function (block) {
 javascriptGenerator['number_input'] = function (block) {
   var num = block.getFieldValue('number');
   // TODO: Assemble JavaScript into code variable.
-  var code = `${num};`;
+  var code = `${num}`;
   // TODO: Change ORDER_NONE to the correct strength.
   return [code, javascriptGenerator.ORDER_ATOMIC];
 };
