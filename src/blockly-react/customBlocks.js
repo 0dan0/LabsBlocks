@@ -830,7 +830,7 @@ Blockly.Blocks['text_print'] = {
 
 Blockly.Blocks['print_var'] = {
   init: function () {
-    this.appendDummyInput().appendField('variable/sensor');
+    this.appendDummyInput().appendField('print variable/sensor');
     this.appendValueInput('print')
       .setCheck([BLOCKLY_DEFAULT_TYPE.STRING, VARIABLE_LIST_TYPE.USER_DEFINED, VARIABLE_LIST_TYPE.SYSTEM_DEFINED])
 	  .appendField(new Blockly.FieldTextInput('value'), 'TEXT_PRINT')
