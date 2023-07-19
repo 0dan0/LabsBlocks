@@ -28,6 +28,7 @@ export const officialToolbox = (
       <Block type="goto_loop" />
       <Block type="loop2" />
       <Block type="goto_loop2" />
+      <Block type="boot_command" />
     </Category>
     <Category name="Comparisons" colour="300">
       <Block type="customized_logic_compare" />

@@ -101,6 +101,17 @@ Blockly.Blocks['customized_if_else'] = {
 };
 
 
+Blockly.Blocks['boot_command'] = {
+  init: function () {
+    this.appendStatementInput('boot_cmd').setCheck(null).appendField('boot with:');
+    this.setPreviousStatement(false, null);
+    this.setNextStatement(false, null);
+    this.setColour(235);
+    this.setTooltip('Wrap this around you complete (and tested) script, to turn it into a boot command');
+    this.setHelpUrl('');
+  },
+};
+
 
 Blockly.Blocks['loop'] = {
   init: function () {
@@ -844,6 +855,15 @@ Blockly.Blocks['print_var'] = {
 };
 
 
+javascriptGenerator['boot_command'] = function (block) {
+  // TODO: Assemble JavaScript into code variable.
+  
+  var statements_cmd = javascriptGenerator.statementToCode(block, 'boot_cmd');
+  let trimmedStatements = statements_cmd?.trim().replace(/;/g, '+');
+  
+  var code = `!MBOOT="!Lbt"!SAVEbt=${trimmedStatements}`;
+  return code;
+};
 
 javascriptGenerator['loop'] = function (block) {
   // TODO: Assemble JavaScript into code variable.
