@@ -110,3 +110,39 @@
   background: none;
   cursor: pointer;
 }
+
+.file-upload {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-upload > input[type='file'] {
+  display: none
+}
+
+.file-upload > label {
+  font-size: 1rem;
+  font-weight: 300;
+  cursor: pointer;
+  outline: 0;
+  user-select: none;
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 29%);
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-upload > label:hover {
+  border-color: hsl(0, 0%, 21%);
+}
+
+.file-upload > label:active {
+  background-color: hsl(0, 0%, 96%);
+}

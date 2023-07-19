@@ -6,6 +6,8 @@ import 'react-responsive-modal/styles.css';
 import BlocklyContextProvider from './context/BlocklyContextProvider';
 import BlocklyComponentWrapper from './blockly-react/BlocklyComponentWrapper';
 import ActionPanel from './blockly-react/ActionPanel';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const localStorageBlockList = localStorage.getItem('blocks') ? JSON.parse(localStorage.getItem('blocks')) : [];
@@ -36,6 +38,7 @@ function App() {
         <ActionPanel />
         <BlocklyComponentWrapper />
       </div>
+      <ToastContainer />
     </BlocklyContextProvider>
   );
 }
