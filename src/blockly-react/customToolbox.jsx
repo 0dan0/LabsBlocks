@@ -1,37 +1,47 @@
 import React from 'react';
 import './customBlocks';
 import Blockly from 'blockly/core';
-import { Block, Category, Sep } from './blocks';
+import { Block, Category, Value, Field, Sep } from './blocks';
 
 export const customTools = (
-  <>
-    <Sep />
-    <Category name="%{BKY_CATBP}" colour="%{BKY_BP_HUE}">
-      <Block type="started_at" />
-      <Block type="started_at_quickly" />
-      <Block type="time_picker" />
+  <> 
+    <Category name="Settings" colour="100">
+      <Block type="mode" />
+      <Block type="res" />
+      <Block type="fps" />
+      <Block type="lens" />
+      <Block type="EIS" />
+      <Block type="qr_command" />
+    </Category>
+    <Category name="Actions" colour="180">
+      <Block type="pause_until" />
+      <Block type="pause_quickly" />
+      <Block type="pause_seconds" />
       <Block type="bp_gopro_start" />
       <Block type="bp_gopro_end" />
+      <Block type="bp_gopro_wifi" />
+      <Block type="bp_gopro_livestream" />
       <Block type="bp_gopro_upload" />
       <Block type="bp_gopro_repeat" />
+      <Block type="bp_gopro_exit" />
+      <Block type="bp_gopro_shutdown" />
+      <Block type="bp_gopro_reboot" />
+      <Block type="bp_gopro_twmode" />
+      <Block type="bp_gopro_waitDOP" />
+      <Block type="bp_gopro_buttons" />
+      <Block type="bp_gopro_beeps" />
     </Category>
-    <Category name="%{BKY_GOPRO_VAR}">
-      <Category name="%{BKY_USER_DEFINED_CAT}">
+    <Category name="Variables" colour="350">
         <Block type="set_var" />
         <Block type="user_defined_var_list" />
-      </Category>
-      <Category name="%{BKY_SYSTEM_DEFINED_CAT}">
-        <Block type="set_var_system" />
+		<Block type="number_input" />
+		<Block type="basic_math_op" />
+    </Category>	
+    <Category name="Sensors" colour="50">
         <Block type="system_defined_var_list" />
-      </Category>
+        <Block type="system_status_list" />
+        <Block type="system_time_list" />
+        <Block type="gps_list" />
     </Category>
   </>
 );
-
-Blockly.setLocale({
-  CATBP: 'Action blocks',
-  GOPRO_VAR: 'GoPro Variables',
-  USER_DEFINED_CAT: 'User defined variables',
-  SYSTEM_DEFINED_CAT: 'System defined variables',
-  BP_HUE: 230,
-});

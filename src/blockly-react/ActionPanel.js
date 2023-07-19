@@ -136,7 +136,7 @@ const ActionPanel = () => {
 
     workspace.clear();
     setWorkSpace(workspace);
-    setBlockTitle('New Block');
+    setBlockTitle('New Project');
     setChanges('');
     setIsSaveBtnEnable(false);
     setSelectedBlock(null);
@@ -172,7 +172,7 @@ const ActionPanel = () => {
           onClick={onOpenModal}
           disabled={!isSaveBtnEnable}
         >
-          Save & Generate Qr
+          Save & Generate QR
         </button>
         <div className='file-upload'>
           <label htmlFor='input-file'>Import image</label>
@@ -188,7 +188,7 @@ const ActionPanel = () => {
           className='actionButton saveButton'
           onClick={handleCreateNewBlock}
         >
-          Create Block
+          Start New Project
         </button>
         <button
           className='actionButton historyButton'
@@ -206,9 +206,9 @@ const ActionPanel = () => {
         }}
       >
         <div className='qrGeneratorWrapper'>
-          <p className='heading'>Here is your Qr Code</p>
+          <p className='heading'>GoPro Labs QR Code</p>
+          <img alt='QR code' src={changes} />
           <pre>{cmd}</pre>
-          <img alt='Qr code' src={changes} />
           <a
             style={{ marginTop: '20px' }}
             href={changes}
