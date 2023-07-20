@@ -57,6 +57,11 @@
   color: #fff;
 }
 
+.actionButton.downloadButton {
+  background: #00f;
+  color: #fff;
+}
+
 .actionButtonWrapper {
   width: 100%;
   display: flex;

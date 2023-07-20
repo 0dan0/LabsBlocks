@@ -47,13 +47,26 @@ const ActionPanel = () => {
     const targetItemIndex = clonedBlocks?.findIndex(
       (cb) => cb?.id === selectedBlock?.id
     );
+
+    const isProjectNameChanged =
+      clonedBlocks[targetItemIndex]?.name?.localeCompare(blockTitle) !== 0;
+
     if (targetItemIndex > -1) {
-      clonedBlocks[targetItemIndex] = {
-        ...clonedBlocks[targetItemIndex],
-        name: blockTitle,
-        block: xml_text,
-        command: code,
-      };
+      if (!isProjectNameChanged) {
+        clonedBlocks[targetItemIndex] = {
+          ...clonedBlocks[targetItemIndex],
+          name: blockTitle,
+          block: xml_text,
+          command: code,
+        };
+      } else {
+        clonedBlocks.push({
+          id: generateUUID(),
+          name: blockTitle,
+          block: xml_text,
+          command: code,
+        });
+      }
     } else {
       clonedBlocks.push({
         id: generateUUID(),
@@ -61,6 +74,7 @@ const ActionPanel = () => {
         block: xml_text,
         command: code,
       });
+      window.history.replaceState({}, document.title, '/');
     }
     localStorage.setItem('blocks', JSON.stringify(clonedBlocks));
 
@@ -82,6 +96,8 @@ const ActionPanel = () => {
         workspace.clear();
         const xml = Blockly.Xml.textToDom(metadata?.tEXt?.block);
         Blockly.Xml.domToWorkspace(xml, workspace);
+        setBlockTitle('New Project');
+        setSelectedBlock({ name: 'New Peoject', block: metadata?.tEXt?.block });
       } else {
         toast.error('No blockly xml found! Please choose the right image.');
       }
@@ -188,18 +204,13 @@ const ActionPanel = () => {
           </div>
           <div className='qrGeneratorWrapper'></div>
           <pre>{cmd}</pre>
-          <a
+          <button
             role='button'
-            style={{
-              marginTop: '20px',
-              color: '#00f',
-              textDecoration: 'underline',
-              cursor: 'pointer',
-            }}
+            className='actionButton downloadButton'
             onClick={handleDownloadQrImage}
           >
-            Download
-          </a>
+            Download QR
+          </button>
         </div>
       </Modal>
       <Modal
