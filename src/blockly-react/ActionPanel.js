@@ -10,10 +10,12 @@ import { generateGoProCmd } from '../utils/generateGoProCmd';
 import { readMetadata, writeMetadata } from '../utils/pngMetadata';
 import { convertBase64ToUnit8Array } from '../utils/imageUtils';
 import { toast } from 'react-toastify';
+import * as htmlToImage from 'html-to-image';
 var Buffer = require('buffer').Buffer;
 
 const ActionPanel = () => {
   const fileUploadRef = useRef(null);
+  const targetHtmlRef = useRef(null);
   const blocklyContext = useContext(BlocklyContext);
   const {
     blocksList,
@@ -61,52 +63,10 @@ const ActionPanel = () => {
       });
     }
     localStorage.setItem('blocks', JSON.stringify(clonedBlocks));
-    const imgBuffer = convertBase64ToUnit8Array(qrCanvas.toDataUrl());
-    const metadata = readMetadata(imgBuffer);
-    metadata.tEXt = { ...metadata.tEXt, block: xml_text };
-    const modifiedMetadata = writeMetadata(imgBuffer, metadata);
-    console.log({ modifiedMetadata });
 
-    const finalBase64Image = new Buffer.from(modifiedMetadata).toString(
-      'base64'
-    );
-    setChanges(`data:image/png;base64,${finalBase64Image}`);
+    setChanges(qrCanvas.toDataUrl());
     setBlocksList(clonedBlocks);
     setOpenModal(true);
-    //
-    // var dataURI = qrCanvas.toDataUrl();
-    // console.log(dataURI);
-    // var byteString = atob(dataURI.split(',')[1]);
-
-    // // separate out the mime component
-    // var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-
-    // // write the bytes of the string to an ArrayBuffer
-    // var ab = new ArrayBuffer(byteString.length);
-
-    // // create a view into the buffer
-    // var ia = new Uint8Array(ab);
-
-    // // set the bytes of the buffer to the correct values
-    // for (var i = 0; i < byteString.length; i++) {
-    //   ia[i] = byteString.charCodeAt(i);
-    // }
-
-    // // write the ArrayBuffer to a blob, and you're done
-    // var blob = new Blob([ab], { type: mimeString });
-    // console.log(blob);
-    // // const file = new File([blob], `${xml_text}`, {
-    // //   type: 'image/png',
-    // // });
-    // // file.block = 'TEST';
-    // // const fileReader = new FileReader();
-    // // fileReader.readAsDataURL(file);
-    // // console.log(fileReader);
-    // // console.log(file);
-    // const d = await blob.arrayBuffer();
-    // console.log(d);
-
-    console.log({ metadata });
   };
 
   const handleUploadQrImage = (e) => {
@@ -114,7 +74,6 @@ const ActionPanel = () => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      console.log('called: ', reader);
       const imageBuffer = convertBase64ToUnit8Array(reader.result);
 
       const metadata = readMetadata(imageBuffer);
@@ -127,7 +86,6 @@ const ActionPanel = () => {
         toast.error('No blockly xml found! Please choose the right image.');
       }
       fileUploadRef.current.value = '';
-      console.log({ metaData2: metadata });
     };
   };
 
@@ -140,6 +98,27 @@ const ActionPanel = () => {
     setChanges('');
     setIsSaveBtnEnable(false);
     setSelectedBlock(null);
+  };
+
+  const handleDownloadQrImage = async () => {
+    const xml = Blockly.Xml.workspaceToDom(workspace);
+    const xml_text = Blockly.Xml.domToText(xml);
+    const dataUrl = await htmlToImage.toPng(targetHtmlRef.current);
+    const imgBuffer = convertBase64ToUnit8Array(dataUrl);
+    const metadata = readMetadata(imgBuffer);
+    metadata.tEXt = { ...metadata.tEXt, block: xml_text };
+    const modifiedMetadata = writeMetadata(imgBuffer, metadata);
+
+    const finalBase64Image = new Buffer.from(modifiedMetadata).toString(
+      'base64'
+    );
+    // download image
+    const link = document.createElement('a');
+    link.download = `${blockTitle}-${new Date().toLocaleString('en-US', {
+      hour12: false,
+    })}.png`;
+    link.href = `data:image/png;base64,${finalBase64Image}`;
+    link.click();
   };
 
   const handleManageHistory = () => {
@@ -162,9 +141,6 @@ const ActionPanel = () => {
           value={blockTitle}
           onChange={handleChangeBlockTitle}
         />
-        {/* <button className='actionButton saveButton' onClick={onOpenModal}>
-            Update
-          </button> */}
       </div>
       <div className='inputWrapper'>
         <button
@@ -206,16 +182,21 @@ const ActionPanel = () => {
         }}
       >
         <div className='qrGeneratorWrapper'>
-          <p className='heading'>GoPro Labs QR Code</p>
-          <img alt='QR code' src={changes} />
+          <div className='qrGeneratorWrapper' ref={targetHtmlRef}>
+            <p className='heading'>GoPro Labs QR Code</p>
+            <img alt='QR code' src={changes} />
+          </div>
+          <div className='qrGeneratorWrapper'></div>
           <pre>{cmd}</pre>
           <a
-            style={{ marginTop: '20px' }}
-            href={changes}
-            target='_black'
-            download={`${blockTitle}-${new Date().toLocaleString('en-US', {
-              hour12: false,
-            })}.png`}
+            role='button'
+            style={{
+              marginTop: '20px',
+              color: '#00f',
+              textDecoration: 'underline',
+              cursor: 'pointer',
+            }}
+            onClick={handleDownloadQrImage}
           >
             Download
           </a>

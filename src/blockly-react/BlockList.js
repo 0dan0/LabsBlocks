@@ -47,7 +47,7 @@ const BlockList = ({ onCloseHistoryModal }) => {
     clonedBlocks.splice(targetItemIndex, 1);
     localStorage.setItem('blocks', JSON.stringify(clonedBlocks));
     setBlocksList(clonedBlocks);
-    if (id === selectedBlock?.id) {
+    if (id === selectedBlock?.id || selectedBlock) {
       setSelectedBlock(null);
       setBlockTitle('New Project');
       setChanges('');
