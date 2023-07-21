@@ -201,9 +201,8 @@ const ActionPanel = () => {
           <div className='qrGeneratorWrapper' ref={targetHtmlRef}>
             <p className='heading'>GoPro Labs QR Code</p>
             <img alt='QR code' src={changes} />
+            <pre>{cmd}</pre>
           </div>
-          <div className='qrGeneratorWrapper'></div>
-          <pre>{cmd}</pre>
           <button
             role='button'
             className='actionButton downloadButton'
