@@ -592,6 +592,7 @@ Blockly.Blocks['system_time_list'] = {
         ['Time day of the week (Sun-0, thru 6)', 't:W'],
         ['Time seconds since boot', 't:B'],
         ['Time seconds since QR Code', 't:Q'],
+        ['Time seconds since record start (Sept`23)', 't:R'],
       ]),
       'SYSTEM_TIME_LIST'
     );
