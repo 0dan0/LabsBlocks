@@ -28,7 +28,7 @@ const BlocklyComponentWrapper = () => {
     }
   }, [id, blocksList, workspace]);
   return (
-    <BlocklyComponent style={{ height: '100vh' }}>
+    <BlocklyComponent style={{ height: '94vh' }}>
       <OnUpdated
         onMounted={(ws) => {
           try {
