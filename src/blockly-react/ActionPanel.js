@@ -197,19 +197,18 @@ const ActionPanel = () => {
           modal: 'customModal',
         }}
       >
-        <div className='qrGeneratorWrapper'>
-          <div className='qrGeneratorWrapper' ref={targetHtmlRef}>
-            <p className='heading'>GoPro Labs QR Code</p>
+        <div className='qrGeneratorWrapper' >
+          <div className='qrGeneratorWrapper' ref={targetHtmlRef} >
+            <h3><font color="#005CAC">GoPro Labs QR Code</font></h3>
             <img alt='QR code' src={changes} />
             <pre>{cmd}</pre>
+            <h3>{blockTitle}</h3>
           </div>
           <button
             role='button'
             className='actionButton downloadButton'
             onClick={handleDownloadQrImage}
-          >
-            Download QR
-          </button>
+          > Download QR </button>
         </div>
       </Modal>
       <Modal
