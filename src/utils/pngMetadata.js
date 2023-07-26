@@ -447,14 +447,14 @@ function insertMetadata(chunks, metadata) {
   }
 }
 
-module.exports = {
-  RESOLUTION_UNITS: RESOLUTION_UNITS,
-  insertMetadata: insertMetadata,
-  readMetadata: readMetadata,
-  writeMetadata: writeMetadata,
-  writeMetadataB: writeMetadataB,
-  textEncode: textEncode,
-  textDecode: textDecode,
-  extractChunks: extractChunks,
-  encodeChunks: encodeChunks,
+export {
+  RESOLUTION_UNITS,
+  insertMetadata,
+  readMetadata,
+  writeMetadata,
+  writeMetadataB,
+  textEncode,
+  textDecode,
+  extractChunks,
+  encodeChunks,
 };
