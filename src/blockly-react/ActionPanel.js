@@ -164,8 +164,16 @@ const ActionPanel = () => {
           onClick={onOpenModal}
           disabled={!isSaveBtnEnable}
         >
-          Save & Generate QR
+          Save/Generate QR
         </button>
+		
+        <button
+          className='actionButton saveButton'
+          onClick={handleCreateNewBlock}
+        >
+          New Project
+        </button>
+				
         <div className='file-upload'>
           <label htmlFor='input-file'>Import image</label>
           <input
@@ -176,18 +184,14 @@ const ActionPanel = () => {
             onChange={handleUploadQrImage}
           />
         </div>
-        <button
-          className='actionButton saveButton'
-          onClick={handleCreateNewBlock}
-        >
-          Start New Project
-        </button>
+		
         <button
           className='actionButton historyButton'
           onClick={handleManageHistory}
         >
-          History
+          Project History
         </button>
+		
       </div>
       <Modal
         open={openModal}

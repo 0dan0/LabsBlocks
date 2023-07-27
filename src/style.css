@@ -39,18 +39,23 @@
 }
 
 .actionButton.generateQrCodeBtn {
-  background: #000;
+  background: rgb(0, 159, 223);
   color: #fff;
 }
 
 .actionButton.saveButton {
-  background: rgb(4, 61, 4);
+  background: rgb(0, 159, 223);
   color: #fff;
 }
 
 .actionButton.historyButton {
-  background: rgb(5, 5, 110);
+  background: rgb(128, 128, 128);
   color: #fff;
+}
+
+.actionButton.historyButton > label:active {
+  background: rgb(0, 92, 223);
+  color: #000;
 }
 
 .actionButton.delete {
@@ -80,7 +85,7 @@
 
 .titleInput {
   padding: 5px;
-  min-width: 400px;
+  min-width: 20%;
   border: none;
   border-bottom: 1px solid;
   font-size: 20px;
@@ -135,8 +140,8 @@
   cursor: pointer;
   outline: 0;
   user-select: none;
-  background-color: hsl(0, 0%, 100%);
-  color: hsl(0, 0%, 29%);
+  background: rgb(0, 92, 223);
+  color: #fff;
   padding: 10px;
   border: 1px solid #000;
   border-radius: 10px;
@@ -151,5 +156,6 @@
 }
 
 .file-upload > label:active {
-  background-color: hsl(0, 0%, 96%);
+  background: rgb(0, 92, 223);
+  color: #000;
 }
