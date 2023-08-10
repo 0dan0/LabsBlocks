@@ -30,6 +30,7 @@ export const customTools = (
       <Block type="bp_gopro_waitDOP" />
       <Block type="bp_gopro_buttons" />
       <Block type="bp_gopro_beeps" />
+      <Block type="bp_gopro_clear" />
     </Category>
     <Category name="Variables" colour="350">
         <Block type="set_var" />

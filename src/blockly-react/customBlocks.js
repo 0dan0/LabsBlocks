@@ -193,6 +193,24 @@ Blockly.Blocks['bp_gopro_wifi'] = {
   },
 };
 
+Blockly.Blocks['bp_gopro_clear'] = {
+  init: function () {
+    this.appendDummyInput().appendField(
+		  new Blockly.FieldDropdown([
+			['Clear SD up to 8GB', '!C8'],
+			['Clear SD up to 16GB', '!C16'],
+			['Clear SD up to 32GB', '!C32'],
+			['Clear SD up to 64GB', '!C64'],
+		  ]),
+		'props'
+	  );
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(190);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
 
 Blockly.Blocks['bp_gopro_livestream'] = {
   init: function () {
@@ -1156,6 +1174,13 @@ javascriptGenerator['bp_gopro_end'] = function (block) {
 
 javascriptGenerator['bp_gopro_wifi'] = function (block) {
   var code = `!W;`;
+  return code;
+};
+
+
+javascriptGenerator['bp_gopro_clear'] = function (block) {
+  var props = block.getFieldValue('props');
+  var code = `${props};`;
   return code;
 };
 
