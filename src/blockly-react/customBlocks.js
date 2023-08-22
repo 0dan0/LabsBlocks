@@ -878,7 +878,7 @@ javascriptGenerator['boot_command'] = function (block) {
   // TODO: Assemble JavaScript into code variable.
   
   var statements_cmd = javascriptGenerator.statementToCode(block, 'boot_cmd');
-  let trimmedStatements = statements_cmd?.trim().replace(/;/g, '+');
+  let trimmedStatements = statements_cmd?.trim().replace(/;/g, '');
   
   var code = `!MBOOT="!Lbt"!SAVEbt=${trimmedStatements}`;
   return code;
