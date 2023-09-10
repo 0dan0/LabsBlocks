@@ -28,6 +28,10 @@ export const officialToolbox = (
       <Block type="goto_loop" />
       <Block type="loop2" />
       <Block type="goto_loop2" />
+      <Block type="loop3" />
+      <Block type="goto_loop3" />
+      <Block type="loop4" />
+      <Block type="goto_loop4" />
       <Block type="boot_command" />
     </Category>
     <Category name="Comparisons" colour="300">

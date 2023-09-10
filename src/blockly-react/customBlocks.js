@@ -74,7 +74,7 @@ Blockly.Blocks['customized_if'] = {
     this.appendStatementInput('IFDO').setCheck(null).appendField('then');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour(200);
     this.setTooltip('Classic IF-THEN branch. Requires a Comparison block for conditions of time, camera status or variable');
     this.setHelpUrl('');
   },
@@ -94,7 +94,7 @@ Blockly.Blocks['customized_if_else'] = {
        .appendField('else');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour(200);
     this.setTooltip('Custom IF-THEN-ELSE branching. Can do only be used as the inner most condition if nested: e.g. IF(IF(IF-THEN-ELSE)))\n Also requires a Comparison block for conditions of time, camera status or variable');
     this.setHelpUrl('');
   },
@@ -106,7 +106,7 @@ Blockly.Blocks['boot_command'] = {
     this.appendStatementInput('boot_cmd').setCheck(null).appendField('boot with:');
     this.setPreviousStatement(false, null);
     this.setNextStatement(false, null);
-    this.setColour(235);
+    this.setColour(210);
     this.setTooltip('Wrap this around you complete (and tested) script, to turn it into a boot command');
     this.setHelpUrl('');
   },
@@ -118,7 +118,7 @@ Blockly.Blocks['loop'] = {
     this.appendDummyInput().appendField('loop:');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(240);
+    this.setColour(220);
     this.setTooltip('This a marker for you can jump to using the matching goto loop: command');
     this.setHelpUrl('');
   },
@@ -129,7 +129,7 @@ Blockly.Blocks['goto_loop'] = {
     this.appendDummyInput().appendField('goto loop');
     this.setPreviousStatement(true, null);
     this.setNextStatement(false, null);
-    this.setColour(240);
+    this.setColour(220);
     this.setTooltip('Jump to goto loop:');
     this.setHelpUrl('');
   },
@@ -141,7 +141,7 @@ Blockly.Blocks['loop2'] = {
     this.appendDummyInput().appendField('loop2:');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(250);
+    this.setColour(230);
     this.setTooltip('This a marker for you can jump to using the matching goto loop2: command');
     this.setHelpUrl('');
   },
@@ -152,8 +152,56 @@ Blockly.Blocks['goto_loop2'] = {
     this.appendDummyInput().appendField('goto loop2');
     this.setPreviousStatement(true, null);
     this.setNextStatement(false, null);
-    this.setColour(250);
+    this.setColour(230);
     this.setTooltip('Jump to goto loop2:');
+    this.setHelpUrl('');
+  },
+};
+
+
+
+Blockly.Blocks['loop3'] = {
+  init: function () {
+    this.appendDummyInput().appendField('loop3:');
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(240);
+    this.setTooltip('This a marker for you can jump to using the matching goto loop3: command');
+    this.setHelpUrl('');
+  },
+};
+
+Blockly.Blocks['goto_loop3'] = {
+  init: function () {
+    this.appendDummyInput().appendField('goto loop3');
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(false, null);
+    this.setColour(240);
+    this.setTooltip('Jump to goto loop3:');
+    this.setHelpUrl('');
+  },
+};
+
+
+
+Blockly.Blocks['loop4'] = {
+  init: function () {
+    this.appendDummyInput().appendField('loop4:');
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(250);
+    this.setTooltip('This a marker for you can jump to using the matching goto loop4: command');
+    this.setHelpUrl('');
+  },
+};
+
+Blockly.Blocks['goto_loop4'] = {
+  init: function () {
+    this.appendDummyInput().appendField('goto loop4');
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(false, null);
+    this.setColour(250);
+    this.setTooltip('Jump to goto loop4:');
     this.setHelpUrl('');
   },
 };
@@ -892,7 +940,7 @@ javascriptGenerator['loop'] = function (block) {
 
 javascriptGenerator['goto_loop'] = function (block) {
   // TODO: Assemble JavaScript into code variable.
-  var code = '}';
+  var code = '{';
   return code;
 };
 
@@ -904,6 +952,34 @@ javascriptGenerator['loop2'] = function (block) {
 };
 
 javascriptGenerator['goto_loop2'] = function (block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = '[';
+  return code;
+};
+
+
+
+javascriptGenerator['loop3'] = function (block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = '}';
+  return code;
+};
+
+javascriptGenerator['goto_loop3'] = function (block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = '}';
+  return code;
+};
+
+
+
+javascriptGenerator['loop4'] = function (block) {
+  // TODO: Assemble JavaScript into code variable.
+  var code = ']';
+  return code;
+};
+
+javascriptGenerator['goto_loop4'] = function (block) {
   // TODO: Assemble JavaScript into code variable.
   var code = ']';
   return code;
