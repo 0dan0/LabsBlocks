@@ -7,6 +7,7 @@ import { generateUUID } from '../utils/generateUUID';
 import Modal from 'react-responsive-modal';
 import BlockList from './BlockList';
 import { generateGoProCmd } from '../utils/generateGoProCmd';
+import { generateGoProFormatCmd } from '../utils/generateGoProCmd';
 import { readMetadata, writeMetadata } from '../utils/pngMetadata';
 import { convertBase64ToUnit8Array } from '../utils/imageUtils';
 import { toast } from 'react-toastify';
@@ -42,7 +43,7 @@ const ActionPanel = () => {
     const xml_text = Blockly.Xml.domToText(xml);
     const code = javascriptGenerator.workspaceToCode(workspace);
     console.log(generateGoProCmd(code));
-    setCmd(generateGoProCmd(code));
+    setCmd(generateGoProFormatCmd(code));
     const qrCanvas = new QRCodeCanvas(generateGoProCmd(code));
     const targetItemIndex = clonedBlocks?.findIndex(
       (cb) => cb?.id === selectedBlock?.id
