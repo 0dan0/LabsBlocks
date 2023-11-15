@@ -17,6 +17,7 @@ export const customTools = (
       <Block type="pause_until" />
       <Block type="pause_quickly" />
       <Block type="pause_seconds" />
+      <Block type="pause_quick_seconds" />
       <Block type="bp_gopro_start" />
       <Block type="bp_gopro_end" />
       <Block type="bp_gopro_wifi" />

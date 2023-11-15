@@ -893,6 +893,33 @@ Blockly.Blocks['pause_seconds'] = {
 };
 
 
+Blockly.Blocks['pause_quick_seconds'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField('Sleep Seconds (Approx.)')
+      .appendField(new Blockly.FieldNumber(1, 1, 86400, 1), 'seconds');
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(190);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
+
+
+Blockly.Blocks['comment_text'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField('comment')
+      .appendField(new Blockly.FieldTextInput(' '), 'COMMENT_TEXT');
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(120);
+    this.setTooltip('code documentation');
+    this.setHelpUrl('');
+  },
+};
+
 Blockly.Blocks['text_print'] = {
   init: function () {
     this.appendDummyInput()
@@ -984,6 +1011,14 @@ javascriptGenerator['goto_loop4'] = function (block) {
   var code = ']';
   return code;
 };
+
+
+javascriptGenerator['comment_text'] = function (block) {
+  var text_print_val = block.getFieldValue('COMMENT_TEXT');
+  var code = '';
+  return code;
+};
+
 
 javascriptGenerator['text_print'] = function (block) {
   var text_print_val = block.getFieldValue('TEXT_PRINT');
@@ -1519,5 +1554,11 @@ javascriptGenerator['pause_quickly'] = function (block) {
 javascriptGenerator['pause_seconds'] = function (block) {
   var seconds = block.getFieldValue('seconds');
   var code = `!${seconds}N;`;
+  return code;
+};
+
+javascriptGenerator['pause_quick_seconds'] = function (block) {
+  var seconds = block.getFieldValue('seconds');
+  var code = `!${seconds}NQ;`;
   return code;
 };

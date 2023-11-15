@@ -10,7 +10,7 @@ const map = {
   catLogic: 'Branches',
   catLoops: 'Loops',
   catMath: 'Math',
-  catText: 'Print',
+  catText: 'Print/Comments',
   catLists: 'Lists',
   catColour: 'Color',
   catVariables: 'Variables',

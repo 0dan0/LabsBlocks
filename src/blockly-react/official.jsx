@@ -42,6 +42,7 @@ export const officialToolbox = (
     <Category name="%{BKY_CATTEXT}" colour="%{BKY_TEXTS_HUE}">
       <Block type="print_var" />
       <Block type="text_print" />
+      <Block type="comment_text" />
     </Category>
   </React.Fragment>
 );
