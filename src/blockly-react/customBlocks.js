@@ -104,7 +104,7 @@ Blockly.Blocks['customized_if_else'] = {
 Blockly.Blocks['boot_command'] = {
   init: function () {
     this.appendStatementInput('boot_cmd').setCheck(null).appendField('boot with:');
-    this.setPreviousStatement(false, null);
+    this.setPreviousStatement(true, null);
     this.setNextStatement(false, null);
     this.setColour(210);
     this.setTooltip('Wrap this around you complete (and tested) script, to turn it into a boot command');
