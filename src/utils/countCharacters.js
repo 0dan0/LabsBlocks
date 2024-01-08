@@ -8,10 +8,13 @@ export const countCharacters = (code) => {
   let offset = 0;
   let inQuote = 0;
   
-  if(code[0] === '!' && code[1] === 'M' && code[2] === 'B' && code[3] === 'O' && code[4] === 'O' && code[5] === 'T') // !MBOOT
-  {
-	  offset = 21;
+  for (let i = 0; i < code.length-8; i++) {
+    if(code[i+0] === '!' && code[i+1] === 'S' && code[i+2] === 'A' && code[i+3] === 'V' && code[i+4] === 'E' && code[i+5] === 'b' && code[i+6] === 't' && code[i+7] === '=') // !MBOOT="!Lbt"!SAVEbt=
+    {
+	    offset = i+8;
+    }
   }
+  
   /*
   for (let i = 0; i < code.length; i++) {
     if (code[i] === '{') {

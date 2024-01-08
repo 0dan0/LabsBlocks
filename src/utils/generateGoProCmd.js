@@ -24,8 +24,10 @@ export const generateGoProFormatCmd = (cmd) => {
   let cloneCmd = `${cmd}`;
   let pos = 0;
   
+  cloneCmd = countCharacters(cloneCmd.replace(/;/g, ''));
+  
   let newcmd = stringToChunks(cloneCmd, 44);
   cloneCmd = newcmd;
   
-  return hasLength ? countCharacters(cloneCmd.replace(/;/g, '')) : '';
+  return hasLength ? cloneCmd : '';
 };
