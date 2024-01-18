@@ -13,11 +13,15 @@ export const customTools = (
       <Block type="EIS" />
       <Block type="qr_command" />
     </Category>
-    <Category name="Actions" colour="180">
+    <Category name="Pauses" colour="180">
       <Block type="pause_until" />
       <Block type="pause_quickly" />
       <Block type="pause_seconds" />
       <Block type="pause_quick_seconds" />
+      <Block type="pause_var_seconds" />
+      <Block type="pause_var_quick_seconds" />
+    </Category>
+    <Category name="Actions" colour="180">
       <Block type="bp_gopro_start" />
       <Block type="bp_gopro_end" />
       <Block type="bp_gopro_wifi" />

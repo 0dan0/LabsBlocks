@@ -921,8 +921,9 @@ Blockly.Blocks['pause_quickly'] = {
 Blockly.Blocks['pause_seconds'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField('Sleep Seconds')
-      .appendField(new Blockly.FieldNumber(1, 1, 86400, 1), 'seconds');
+      .appendField('Sleep')
+      .appendField(new Blockly.FieldNumber(1, 1, 86400, 1), 'seconds')
+      .appendField('seconds');
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(190);
@@ -935,8 +936,9 @@ Blockly.Blocks['pause_seconds'] = {
 Blockly.Blocks['pause_quick_seconds'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField('Sleep Seconds (Approx.)')
-      .appendField(new Blockly.FieldNumber(1, 1, 86400, 1), 'seconds');
+      .appendField('Sleep')
+      .appendField(new Blockly.FieldNumber(1, 1, 86400, 1), 'seconds')
+      .appendField('approx. seconds');	  
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(190);
@@ -944,6 +946,97 @@ Blockly.Blocks['pause_quick_seconds'] = {
     this.setHelpUrl('');
   },
 };
+
+
+Blockly.Blocks['pause_var_seconds'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField('Sleep var:')
+      .appendField(
+        new Blockly.FieldDropdown([
+          ['A', 'A'],
+          ['B', 'B'],
+          ['C', 'C'],
+          ['D', 'D'],
+          ['E', 'E'],
+          ['F', 'F'],
+          ['G', 'G'],
+          ['H', 'H'],
+          ['I', 'I'],
+          ['J', 'J'],
+          ['K', 'K'],
+          ['L', 'L'],
+          ['M', 'M'],
+          ['N', 'N'],
+          ['O', 'O'],
+          ['P', 'P'],
+          ['Q', 'Q'],
+          ['R', 'R'],
+          ['S', 'S'],
+          ['T', 'T'],
+          ['U', 'U'],
+          ['V', 'V'],
+          ['W', 'W'],
+          ['X', 'X'],
+          ['Y', 'Y'],
+          ['Z', 'Z'],
+        ]),
+        'USER_DEFINED_VAR'
+      )
+      .appendField('seconds');
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(190);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
+
+
+Blockly.Blocks['pause_var_quick_seconds'] = {
+  init: function () {
+    this.appendDummyInput()
+      .appendField('Sleep var:')	  
+      .appendField(
+        new Blockly.FieldDropdown([
+          ['A', 'A'],
+          ['B', 'B'],
+          ['C', 'C'],
+          ['D', 'D'],
+          ['E', 'E'],
+          ['F', 'F'],
+          ['G', 'G'],
+          ['H', 'H'],
+          ['I', 'I'],
+          ['J', 'J'],
+          ['K', 'K'],
+          ['L', 'L'],
+          ['M', 'M'],
+          ['N', 'N'],
+          ['O', 'O'],
+          ['P', 'P'],
+          ['Q', 'Q'],
+          ['R', 'R'],
+          ['S', 'S'],
+          ['T', 'T'],
+          ['U', 'U'],
+          ['V', 'V'],
+          ['W', 'W'],
+          ['X', 'X'],
+          ['Y', 'Y'],
+          ['Z', 'Z'],
+        ]),
+        'USER_DEFINED_VAR'
+      )
+      .appendField('approx. seconds');  
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(190);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  },
+};
+
 
 
 Blockly.Blocks['comment_text'] = {
@@ -1599,5 +1692,18 @@ javascriptGenerator['pause_seconds'] = function (block) {
 javascriptGenerator['pause_quick_seconds'] = function (block) {
   var seconds = block.getFieldValue('seconds');
   var code = `!${seconds}NQ;`;
+  return code;
+};
+
+
+javascriptGenerator['pause_var_seconds'] = function (block) { 
+  var varLetter = block.getFieldValue('USER_DEFINED_VAR');
+  var code = `!$${varLetter}N;`;
+  return code;
+};
+
+javascriptGenerator['pause_var_quick_seconds'] = function (block) {
+  var varLetter = block.getFieldValue('USER_DEFINED_VAR');
+  var code = `!$${varLetter}NQ;`;
   return code;
 };
