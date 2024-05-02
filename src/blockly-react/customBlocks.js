@@ -765,6 +765,7 @@ Blockly.Blocks['customized_logic_compare'] = {
 		  new Blockly.FieldDropdown([
 			['>=', '>'],
 			['<', '<'],
+			['==', '=='],
 		  ]),
 		'compare_op'
 	  );
@@ -788,6 +789,7 @@ Blockly.Blocks['time_picker'] = {
         new Blockly.FieldDropdown([
           ['>=', '>'],
           ['<', '<'],
+          ['==', '=='],
         ]),
         'comparison_op'
       )
