@@ -1039,8 +1039,6 @@ Blockly.Blocks['pause_var_quick_seconds'] = {
   },
 };
 
-
-
 Blockly.Blocks['comment_text'] = {
   init: function () {
     this.appendDummyInput()

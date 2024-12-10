@@ -3,6 +3,8 @@ import { countCharacters } from './countCharacters';
 export const generateGoProCmd = (cmd) => {
   const hasLength = cmd?.length;
   let cloneCmd = `${cmd}`;
+  //console.log(cloneCmd);
+  cloneCmd = cloneCmd.replace(/\/\/.*(\r?\n\s*|\r\s*|$)/g, '');
   if (hasLength && cloneCmd[hasLength - 1] === '+') {
     cloneCmd = cloneCmd.substring(0, hasLength - 1);
   }
@@ -24,6 +26,7 @@ export const generateGoProFormatCmd = (cmd) => {
   let cloneCmd = `${cmd}`;
   let pos = 0;
   
+  cloneCmd = cloneCmd.replace(/\/\/.*(\r?\n\s*|\r\s*|$)/g, '');
   cloneCmd = countCharacters(cloneCmd.replace(/;/g, ''));
   
   let newcmd = stringToChunks(cloneCmd, 44);
