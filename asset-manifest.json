@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/LabsBlocks/static/css/main.364cf376.css",
-    "main.js": "/LabsBlocks/static/js/main.b7de5188.js",
+    "main.js": "/LabsBlocks/static/js/main.e3504844.js",
     "index.html": "/LabsBlocks/index.html",
     "main.364cf376.css.map": "/LabsBlocks/static/css/main.364cf376.css.map",
-    "main.b7de5188.js.map": "/LabsBlocks/static/js/main.b7de5188.js.map"
+    "main.e3504844.js.map": "/LabsBlocks/static/js/main.e3504844.js.map"
   },
   "entrypoints": [
     "static/css/main.364cf376.css",
-    "static/js/main.b7de5188.js"
+    "static/js/main.e3504844.js"
   ]
 }
