@@ -654,6 +654,11 @@ Blockly.Blocks['system_status_list'] = {
         ['Status App Connected (T:1, F:-1)', 'r:A'],
         ['Status mode press count', 'y'],
         ['Status shutter press count', 'z'],
+        ['Status network connected (T:lengthSSID, F:-1)', 'n'],
+        ['Status livestream connected (T:1, F:-1)', 'n:L'],
+        ['Status processor temperature', 'p:T'],
+        ['Status battery temperature', 'b:T'],
+        ['Status current mode', 'v'],
       ]),
       'SYSTEM_STATUS_LIST'
     );
